@@ -132,7 +132,7 @@ def make_final_video(
     length: int,
     reddit_obj: dict,
     background_config: Dict[str, Tuple],
-):
+) -> str:
     """Gathers audio clips, gathers all screenshots, stitches them together and saves the final video to assets/temp
     Args:
         number_of_clips (int): Index to end at when going through the screenshots'
@@ -399,6 +399,7 @@ def make_final_video(
     pbar.close()
     save_data(subreddit, filename + ".mp4", title, idx, background_config["video"][2])
     print_step("Removing temporary files 🗑")
-    cleanups = cleanup(reddit_id)
+    cleanups = cleanup()
     print_substep(f"Removed {cleanups} temporary files 🗑")
     print_step("Done! 🎉 The video is in the results folder 📁")
+    return f"{defaultPath}/{filename}.mp4"

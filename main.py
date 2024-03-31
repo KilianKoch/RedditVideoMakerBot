@@ -58,8 +58,9 @@ def main(POST_ID=None) -> None:
     download_background_video(bg_config["video"])
     download_background_audio(bg_config["audio"])
     chop_background(bg_config, length, reddit_object)
-    make_final_video(number_of_comments, length, reddit_object, bg_config)
-
+    path_video = make_final_video(number_of_comments, length, reddit_object, bg_config)
+    input(f"{path_video}:")
+    
 
 def run_many(times) -> None:
     for x in range(1, times + 1):
